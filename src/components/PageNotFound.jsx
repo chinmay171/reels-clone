@@ -2,7 +2,7 @@
 
 function PageNotFound(){
     return(
-        <>Page Not Found</>
+        <div>Page Not Found</div>
     )
 }
 
