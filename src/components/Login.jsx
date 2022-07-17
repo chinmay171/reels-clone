@@ -1,6 +1,7 @@
 import  {useState } from "react";
 import {auth} from "../firebase"
-import {signInWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
+// import { async } from "@firebase/util";
 
 function Login(){
     const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ function Login(){
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState("");
+    const [mainLoader, setMainLoader] = useState(true);
 
     const trackEmail = function(e){
         setEmail(e.target.value);
@@ -31,10 +33,28 @@ function Login(){
         }
         setLoader(false)
     }
+
+    const logout = async function(){
+        await signOut(auth);
+        setUser(null);
+    }
+
+    useState(()=>{
+        onAuthStateChanged(auth, (user)=>{
+            if(user){
+                setUser(user);
+            }else{
+                setUser(null);
+            }
+            setMainLoader(false);
+        })
+    })
+
     return(<>
-        {error != "" ?  <h1>Error is {error}</h1>:
+        {mainLoader == true?<h1>Page is Loading...</h1>:
+        error != "" ?  <h1>Error is {error}</h1>:
             loader == true ? <h1>...Loading</h1>:
-                user != null ? <h1>User is {user.uid}</h1>:
+                user != null ? <><h1>User is {user.uid}</h1> <button onClick={logout}>Log out</button></>:
             <>
                 < input type="email" onChange={trackEmail} placeholder="E-mail" />
                 <br></br>

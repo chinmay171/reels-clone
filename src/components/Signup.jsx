@@ -1,8 +1,41 @@
-
+import { useState} from "react";
+import {auth} from "../firebase"
+import {createUserWithEmailAndPassword} from "firebase/auth"
 
 function Signup(){
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [loader, setLoader] = useState(false);
+    const [error, setError] = useState(null);
+    const [user, setUser] = useState("");
+
+    const processSignUp =async function(){
+        try {
+            setLoader(true);
+            let userCred = await createUserWithEmailAndPassword(auth,email,password);
+            setUser(userCred.user);
+        } catch (error) {
+            setError(error.message);
+            setTimeout(()=>{
+                setError("");
+            }, 2000);
+        }
+        setLoader(false);
+    }
     return(
-        <div>Sign up</div>
+        <>
+        {error!=null?<h1>Error is {error}</h1>:
+            loader == true?<h1>...Loading</h1>:
+                user!=""?<h1>Sign up User is {user.uid}</h1>:
+            <>
+            <input type="email" onChange={(e)=>{setEmail(e.target.value)}}  value={email} placeholder="email"></input><br></br>
+            <input type="password" onChange={(e)=>{setPassword(e.target.value)}} value ={password} placeholder="password"></input><br></br>
+            <input type="text" onChange={(e)=>{setName(e.target.value)}} value={name} placeholder="Full Name"></input><br></br>
+            <button type="click" onClick={processSignUp}>Sign up</button>
+            </>
+        }
+        </>
     )
 }
 
