@@ -13,17 +13,19 @@ function App() {
     <BrowserRouter>
     <Switch>
       <PrivateRoute path="/feed" comp={Feed}>
-        
+
       </PrivateRoute>
       {/* <Route path="/feed">
        <Feed></Feed>
       </Route> */}
+      {/* <RedirectToFeed path="/login" comp={Login}></RedirectToFeed> */}
       <Route path="/login">
        <Login></Login>
       </Route>
-      <Route path="/signup">
+      <RedirectToFeed path="/signup" comp={Signup}></RedirectToFeed>
+      {/* <Route path="/signup">
        <Signup></Signup>
-      </Route>
+      </Route> */}
       <PrivateRoute path="/profile" comp={Profile}>
 
       </PrivateRoute>
@@ -51,6 +53,21 @@ function PrivateRoute(props){
       }
     }
     ></Route>
+  )
+}
+
+function RedirectToFeed(props){
+  let Component = props.comp;
+  let cUser = useContext(AuthContext);
+  return(
+    <Route
+    {...props}
+    render={
+      (props)=>{
+        return cUser != null ? <Redirect {...props} to="/feed"></Redirect>:
+        <Component {...props}></Component>
+      }
+    }></Route>
   )
 }
 
