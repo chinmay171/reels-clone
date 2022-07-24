@@ -25,12 +25,12 @@ function Profile(){
 
     return (
         <>
-            {loading == true?<div>...Loading</div>:    
+            {loading === true?<div>...Loading</div>:    
      <>
      <div className="header"></div>
      <div className="main">
          <div className="pimg_container">
-             <img src={user.profileImageURL} className="pimg" />
+             <img src={user.profileImageURL} alt="" className="pimg" />
          </div>
          <div className="details">
              <div className="content">{user.name}</div>

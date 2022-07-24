@@ -1,11 +1,11 @@
-.VideoCard{
+.video-card{
     height: 100%;
     width: 35%;
     margin: auto;
     position: relative;
 }
 
-.VideoCard-username{
+.video-card-username{
     z-index:1;
     position: absolute;
     bottom: 10rem;
@@ -36,3 +36,26 @@
 .comment-form input{
     width: 85%;
 }
+
+
+.video-card-video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.comment-form{
+    height: 10%;
+    display: flex;
+}
+
+.comment-form input{
+    width: 85%;
+}
+
+.video-card-video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+} 
