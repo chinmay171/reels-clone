@@ -1,18 +1,86 @@
-.header{
+.topBarFeed{
+    height: 4rem;
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    box-shadow: 0px 0px 5px 0px grey;
+    /* background-color: aqua; */
 }
 
-.insta_img{
-    height:3rem;
+.topBarlogoFeed img{
+    height: 3rem;
+    width: 12rem;
+    padding: 0.5rem;
 }
 
-.profile_img{
-    height: 2.5rem;
-    width: 2.5rem;
+.topBarFeedbtn{
+    display: flex;;
+    height: 4rem;
+    position: absolute;
+    left: 49rem;
+}
+
+
+
+.FeedProfilebtn{
+    height: 4rem;
+    width: 6rem;
+}
+
+.FeedProfilebtn:hover{
+    background-color: lightgray;
+}
+
+.topBarFeedProfile{
+    height: 4rem;
+    width: 4rem;
     border-radius: 50%;
+    margin-left: 1rem;
 }
+
+.topBarFeedHome{
+    height: 4rem;
+    width: 6rem;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: large;
+}
+.topBarFeedHome:hover{
+    background-color: lightgray;
+}
+
+.AddPostFeed{
+    height: 4rem;
+    width: 12rem;
+}
+
+.topBarFeedAddPost{
+    height: 4rem;
+    width: 12rem;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: large;
+}
+.topBarFeedAddPost:hover{
+    background-color: lightgray;
+}
+
+.topBarFeedLogout{
+    height: 4rem;
+    width: 6rem;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: large;
+}
+.topBarFeedLogout:hover{
+    background-color: lightgray;
+}
+
 
 .main_container{
     display: flex;

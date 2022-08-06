@@ -3,37 +3,114 @@ body{
     font-family: sans-serif;
 }
 
-.header{
-    height: 5rem;
-    border-bottom: 2px solid grey;
+.topBarlogged{
+    display: flex;
+    align-items:stretch;
+    justify-content:end;
+    height: 4rem;
+    box-shadow: 0px 0px 5px 0px grey;
+    max-width: 100%;
+}
+
+.topBarloggedLogo img{
+    padding: 0.5rem;
+    height: 3rem;
+    width: 12rem;
+    border-bottom: none;
+    position:absolute;
+    left: 0rem;
+}
+
+.topBarloggedbtn{
+    display:flex;
+    height: 100%;
+}
+
+.topBarLoggedHome{
+    height: 4rem;
+    width: 6rem;
+    font-size:large;
+    border: none;
+    background-color: #fff;
+    cursor: pointer
+}
+
+.topBarLoggedHome:hover{
+    background-color: lightgray;
+}
+
+.AddPostFeed{
+    height: 4rem;
+    width: 12rem;
+}
+
+.topBarFeedAddPost{
+    height: 4rem;
+    width: 12rem;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: large;
+}
+.topBarFeedAddPost:hover{
+    background-color: lightgray;
+}
+
+.topBarLogout{
+    height: 100%;
+    width: 6rem;
+    font-size:large;
+    border: none;
+    background-color: #fff;
+    cursor: pointer
+}
+
+.topBarLogout:hover{
+    background-color: lightgray;
 }
 
 .main{
-    display: flex;
+    display:flex;
     height: calc(100vh-10rem);
     align-items: center;
-    justify-content: space-evenly
+    justify-content:center
+}
+
+.profileCont{
+    display: flex;
+    height: 12rem;
+    max-width: 50%;
+    justify-content: center;
+    padding: 1rem;
+    /* border: 0.1rem solid black; */
+    border-bottom: 0.05rem solid black;
 }
 
 .pimg_container{
-    
+    max-height: 10rem;
+    max-width: 10rem;
+    border: 0.07rem solid black;
+    /* margin-top: 1rem; */
+    border-radius: 50%;
 }
 
-.pimg{
-    height: 20rem;
-    width: 20rem;
+.pimg_container img{
+    height: 10rem;
+    width: 10rem;
     border-radius: 50%;
 }
 
 .details{
-    text-align: center;
-    margin-top: 5rem;
+    text-align:start;
+    margin-top: 2rem;
+    margin-left: 3rem;
 }
 
 .content{
     line-height: 1.5;
     font-size: 1.5rem;
-    color: grey;
+    color: rgb(69, 69, 69);
 }
 
 .bold_text{
@@ -42,6 +119,8 @@ body{
 }
 
 .main>*{
-    height: 80%;
-    width: 40%;
+    height: 100%;
+    width: 100%;
+    
 }
+

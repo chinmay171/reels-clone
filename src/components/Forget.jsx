@@ -2,7 +2,7 @@
 
 function Forget(){
     return(
-        <>Forget</>
+        <div>Forget</div>
     )
 }
 

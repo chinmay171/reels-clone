@@ -2,6 +2,9 @@ import  {useState } from "react";
 import {auth} from "../firebase"
 import {signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
 // import { async } from "@firebase/util";
+import instaLogo from "../Assets/instaLogo.png"
+import "./login.css";
+import { Link } from "react-router-dom";
 
 function Login(){
     const [email, setEmail] = useState("");
@@ -25,6 +28,7 @@ function Login(){
             setLoader(true);
             let userCred = await signInWithEmailAndPassword(auth, email, password);
             setUser(userCred.user);
+            window.location.reload(false);
         } catch (err) {
             setError(err.message);
             setTimeout(() => {
@@ -34,10 +38,16 @@ function Login(){
         setLoader(false)
     }
 
-    const logout = async function(){
-        await signOut(auth);
-        setUser(null);
-    }
+    // const logout = async function(){
+    //     await signOut(auth);
+    //     setUser(null);
+    // }
+
+    const refreshPage = async function() {
+        setTimeout(()=>{
+            window.location.reload(false);
+        }, 100)
+      }
 
     useState(()=>{
         onAuthStateChanged(auth, (user)=>{
@@ -50,21 +60,51 @@ function Login(){
         })
     })
 
-    return(<>
-        {
-        // mainLoader == true?<h1>Page is Loading...</h1>:
-        error != "" ?  <h1>Error is {error}</h1>:
-            loader == true ? <h1>...Loading</h1>:
-                user != null ? <><h1>User is {user.uid}</h1> <button onClick={logout}>Log out</button></>:
+    return(
+        <div className="loginWrapper">
+            {
+            error != "" ?  
             <>
-                < input type="email" onChange={trackEmail} placeholder="E-mail" />
-                <br></br>
-                <input type="password" onChange={trackPassword} placeholder="Password" />
-                <br></br>
-                <button type="click" onClick={printDetails}>Create Account</button>
+                <div className="alert">
+                    Invalid Input !!!
+                </div>
             </>
-        }
-        </>
+            :
+                <>
+                    <div className="topBar">
+                            <div className="topBarlogo">
+                                <img src={instaLogo} alt="" />
+                            </div>
+                            <div className="topBarbtn">
+                                <Link to="/login">
+                                        <button type="button" className="linkto login" onClick={refreshPage}>Log In</button>
+                                </Link>
+                                <Link to="/signup">
+                                        <button type="button" className="linkto signin" onClick={refreshPage}>Sign Up</button>
+                                </Link>
+                            </div>
+                    </div>
+                    <div className="loginCard">
+                        <div className="logo">
+                            <img src={instaLogo} alt="" />
+                        </div>
+                        <div className="loginDetails">
+                            < input type="email" className="input" onChange={trackEmail} placeholder="Email" /> <br></br>
+                            <input type="password" className="input" onChange={trackPassword} placeholder="Password" /><br></br>
+                            <button type="click" className="loginButton" onClick={printDetails}>Log In</button>
+                        </div>
+                        <div className="secondCard">
+                            <Link to="/signup">
+                                <button type="button" className="linktologin Signup" onClick={refreshPage}>Don't have an account ?</button>
+                            </Link>
+                            <Link to="/forget">
+                                <button type="button" className="linktologin Forget" onClick={refreshPage}>Forgot Password ?</button>
+                            </Link>
+                        </div>
+                    </div>
+                </>
+            }
+        </div>
     )
 }
 

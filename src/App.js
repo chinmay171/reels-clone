@@ -7,31 +7,21 @@ import Signup from "./components/Signup"
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import {AuthContext, AuthContextProvider} from "./context/authContext";
 import { Component, useContext } from 'react';
+import Forget from './components/Forget';
 function App() {
   return (
     <AuthContextProvider>
     <BrowserRouter>
     <Switch>
-      <PrivateRoute path="/feed" comp={Feed}>
+      
+      <Route path="/forget"><Forget/></Route>
 
-      </PrivateRoute>
-      {/* <Route path="/feed">
-       <Feed></Feed>
-      </Route> */}
-      {/* <RedirectToFeed path="/login" comp={Login}></RedirectToFeed> */}
-      <Route path="/login">
-       <Login></Login>
-      </Route>
+      <PrivateRoute path="/feed" comp={Feed}></PrivateRoute>
+
+      <RedirectToFeed path="/login" comp={Login}></RedirectToFeed>
       <RedirectToFeed path="/signup" comp={Signup}></RedirectToFeed>
-      {/* <Route path="/signup">
-       <Signup></Signup>
-      </Route> */}
-      <PrivateRoute path="/profile" comp={Profile}>
-
-      </PrivateRoute>
-      {/* <Route path="/profile">
-       <Profile></Profile>
-      </Route> */}
+      
+      <PrivateRoute path="/profile" comp={Profile}></PrivateRoute>
       <Route>
        <PageNotFound></PageNotFound>
       </Route>
